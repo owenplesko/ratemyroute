@@ -1,0 +1,71 @@
+body {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 16px;
+    background-color: #27272A;
+    display: flex;
+    height: 100vh;
+    margin: 0px;
+    justify-content: center;
+    align-items: center;
+    color: #D4D4D8;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding-inline-start: 0;
+}
+
+li {
+    padding-bottom: 24px;
+}
+
+.content-container {
+    display: flex;
+    border-radius: 2px;
+    width: 1000px;
+    height: 80%;
+    background-color: transparent;
+    border:1px solid #71717A;
+}
+
+.json-input {
+    padding: 16px;
+    background-color: transparent;
+    border: none;
+    flex-grow: 1;
+    outline: none;
+    resize: none;
+    color: #D4D4D8;
+}
+
+.json-input:focus {
+    outline: none;
+}
+
+.stats-container {
+    width: 300px;
+    padding: 16px;
+    border-left: solid 1px #71717A;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: start;
+}
+
+.rate-button {
+    color: #D4D4D8;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
+    background-color: #18181B;
+    border: 1px solid #71717A;
+    padding: 8px 24px;
+}
+
+.rate-button:hover {
+    background-color: #0F172A;
+}
+
+.note {
+    margin-top: auto;
+}

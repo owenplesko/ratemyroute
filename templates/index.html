@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rate My Route</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="content-container">
+        <textarea class="json-input" id="jsonInput" rows="10" cols="30" placeholder="paste route here..."></textarea>
+        <div class="stats-container">
+            <ul id="responseArea">
+                <li key="num_wps">Number of Waypoints: <span id="num_wps"></span></li>
+                <li key="avg_density">Average Density: <span id="avg_density"></span></li>
+                <li key="avg_dist_between_wps">Average TP Distance: <span id="avg_dist_between_wps"></span></li>
+                <li key="total_dist">Total Distance: <span id="total_dist"></span></li>
+            </ul>
+            <button class="rate-button" id="submitButton">Rate</button>
+            <span class="note">Note: Density is the sum of mineable gems at a given platform. Panes are worth 2 and block are worth 3.</span>
+        </div>
+    </div>
+    
+
+    <script>
+        $(document).ready(function(){
+            $("#submitButton").click(function(){
+                var jsonData = JSON.parse($("#jsonInput").val());
+                $.ajax({
+                    url: '/rate',
+                    type: 'post',
+                    contentType: 'application/json',
+                    data: JSON.stringify(jsonData),
+                    success: function(response) {
+                        $("#avg_density").text(response.avg_density);
+                        $("#avg_dist_between_wps").text(response.avg_dist_between_wps);
+                        $("#num_wps").text(response.num_wps);
+                        $("#total_dist").text(response.total_dist);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
