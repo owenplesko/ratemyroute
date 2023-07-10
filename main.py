@@ -33,7 +33,7 @@ def getDensity(x, y, z):
     x -= 192
     y -= 30
     z -= 192
-    density = np.sum(world_arr[x - 1 : x + 2, z - 1 : z + 2, y + 1 : y + 5])
+    density = np.sum(world_arr[x - 1 : x + 2, z - 1 : z + 2, y + 1 : y + 6])
     density -= np.sum(world_arr[x, z, y + 1 : y + 3])
     return density
 
